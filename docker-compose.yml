@@ -1,0 +1,18 @@
+---
+services:
+  service-a:
+    build:
+      args:
+        - other_host=host_b
+      context: .
+    container_name: container_a
+    hostname: host_a
+  service-b:
+    build:
+      args:
+        - other_host=host_a
+      context: .
+    container_name: container_b
+    hostname: host_b
+version: '3'
+...

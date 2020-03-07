@@ -1,0 +1,41 @@
+Building service-a
+Step 1/6 : FROM alpine
+ ---> e7d92cdc71fe
+Step 2/6 : ARG other_host
+ ---> Using cache
+ ---> bd062cd41578
+Step 3/6 : ENV script=/tmp/ping-other_host
+ ---> Using cache
+ ---> b7002122594a
+Step 4/6 : ENV bash_syntax="set -x; ping -c 1 $(hostname -f); ping -c 1 ${other_host};"
+ ---> Using cache
+ ---> 4fbd8b62afcb
+Step 5/6 : RUN set -x && apk add bash iputils && echo "${bash_syntax}" > "${script}" && chmod +x "${script}" && :
+ ---> Using cache
+ ---> fd565f5cd2b1
+Step 6/6 : ENTRYPOINT ["/bin/bash", "-c", "${script}"]
+ ---> Using cache
+ ---> a44c6f147d7e
+Successfully built a44c6f147d7e
+Successfully tagged docker-compose-dns-test_service-a:latest
+
+Building service-b
+Step 1/6 : FROM alpine
+ ---> e7d92cdc71fe
+Step 2/6 : ARG other_host
+ ---> Using cache
+ ---> bd062cd41578
+Step 3/6 : ENV script=/tmp/ping-other_host
+ ---> Using cache
+ ---> b7002122594a
+Step 4/6 : ENV bash_syntax="set -x; ping -c 1 $(hostname -f); ping -c 1 ${other_host};"
+ ---> Using cache
+ ---> d8458e8b33e4
+Step 5/6 : RUN set -x && apk add bash iputils && echo "${bash_syntax}" > "${script}" && chmod +x "${script}" && :
+ ---> Using cache
+ ---> 3fc9e01215f1
+Step 6/6 : ENTRYPOINT ["/bin/bash", "-c", "${script}"]
+ ---> Using cache
+ ---> 0c5d14ad7aa9
+Successfully built 0c5d14ad7aa9
+Successfully tagged docker-compose-dns-test_service-b:latest
