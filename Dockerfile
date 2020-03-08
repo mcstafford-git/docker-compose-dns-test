@@ -1,9 +1,11 @@
 FROM alpine
 
-ARG other_host
-ENV script=/tmp/ping-other_host
-# bash_syntax attempts to ping self, and ${other_host}
-ENV bash_syntax="set -x; ping -c 1 $(hostname -f); ping -c 1 ${other_host};"
+ARG self
+ARG other
+
+ENV script=/tmp/ping_containers
+# attempt to ping self, and ${other_container}
+ENV bash_syntax="set -x; while :; do ping -c 1 ${self}; ping -c 1 ${other}; sleep 5; done"
 
 RUN \
 set -x && \

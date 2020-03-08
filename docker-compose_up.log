@@ -2,26 +2,33 @@ Creating container_a ... done
 Creating container_b ... done
 Attaching to container_b, container_a
 
-container_a  | +++ hostname -f
-container_a  | ++ ping -c 1 host_a
-container_a  | PING host_a (172.29.0.3) 56(84) bytes of data.
-container_a  | 64 bytes from host_a (172.29.0.3): icmp_seq=1 ttl=64 time=0.041 ms
+container_a  | ++ ping -c 1 container_a
+container_a  | PING container_a (192.168.48.2) 56(84) bytes of data.
+container_a  | 64 bytes from host_a (192.168.48.2): icmp_seq=1 ttl=64 time=0.052 ms
 container_a  |
-container_a  | --- host_a ping statistics ---
+container_a  | --- container_a ping statistics ---
 container_a  | 1 packets transmitted, 1 received, 0% packet loss, time 0ms
-container_a  | rtt min/avg/max/mdev = 0.041/0.041/0.041/0.000 ms
-container_a  | ++ ping -c 1 host_b
-container_a  | ping: host_b: Name does not resolve
-container_a exited with code 2
+container_a  | rtt min/avg/max/mdev = 0.052/0.052/0.052/0.000 ms
+container_a  | ++ ping -c 1 container_b
+container_a  | PING container_b (192.168.48.3) 56(84) bytes of data.
+container_a  | 64 bytes from container_b.docker-compose-dns-test_default (192.168.48.3): icmp_seq=1 ttl=64 time=0.103 ms
+container_a  |
+container_a  | --- container_b ping statistics ---
+container_a  | 1 packets transmitted, 1 received, 0% packet loss, time 0ms
+container_a  | rtt min/avg/max/mdev = 0.103/0.103/0.103/0.000 ms
 
-container_b  | +++ hostname -f
-container_b  | ++ ping -c 1 host_b
-container_b  | PING host_b (172.29.0.2) 56(84) bytes of data.
-container_b  | 64 bytes from host_b (172.29.0.2): icmp_seq=1 ttl=64 time=0.040 ms
-container_b  |
-container_b  | --- host_b ping statistics ---
+container_b  | ++ ping -c 1 container_b
+container_b  | PING container_b (192.168.48.3) 56(84) bytes of data.
+container_b  | 64 bytes from host_b (192.168.48.3): icmp_seq=1 ttl=64 time=0.033 ms
+container_b  | 
+container_b  | --- container_b ping statistics ---
 container_b  | 1 packets transmitted, 1 received, 0% packet loss, time 0ms
-container_b  | rtt min/avg/max/mdev = 0.040/0.040/0.040/0.000 ms
-container_b  | ++ ping -c 1 host_a
-container_b  | ping: host_a: Name does not resolve
-container_b exited with code 2
+container_b  | rtt min/avg/max/mdev = 0.033/0.033/0.033/0.000 ms
+container_b  | ++ ping -c 1 container_a
+container_b  | PING container_a (192.168.48.2) 56(84) bytes of data.
+container_b  | 64 bytes from container_a.docker-compose-dns-test_default (192.168.48.2): icmp_seq=1 ttl=64 time=0.080 ms
+container_b  | 
+container_b  | --- container_a ping statistics ---
+container_b  | 1 packets transmitted, 1 received, 0% packet loss, time 0ms
+container_b  | rtt min/avg/max/mdev = 0.080/0.080/0.080/0.000 ms
+

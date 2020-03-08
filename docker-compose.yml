@@ -3,14 +3,16 @@ services:
   service-a:
     build:
       args:
-        - other_host=host_b
+        - self=container_a
+        - other=container_b
       context: .
     container_name: container_a
     hostname: host_a
   service-b:
     build:
       args:
-        - other_host=host_a
+        - self=container_b
+        - other=container_a
       context: .
     container_name: container_b
     hostname: host_b
